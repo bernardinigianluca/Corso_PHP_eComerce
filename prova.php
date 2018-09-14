@@ -9,7 +9,9 @@
       define("Const1","valore constante prova");
       echo "Variabile php $test " . $test;
       echo "<br>";
-      echo "Costante php Const1 " . Const1;
+      echo "Costante php Const1 <b>" . Const1 . "</b>";
+      echo "<br>";
+      echo "Variabile <b>" . $test . "</b> e " . "Constante <b>" . Const1 . "</b>";
     ?>
   </body>
 </html>
