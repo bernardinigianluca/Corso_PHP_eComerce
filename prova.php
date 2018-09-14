@@ -13,5 +13,12 @@
       echo "<br>";
       echo "Variabile <b>" . $test . "</b> e " . "Constante <b>" . Const1 . "</b>";
     ?>
+    <hr>
+    <h2>Commandi Git</h2>
+    <ul>
+      <li><b>git add -A</b>                 //to track all file</li>
+      <li><b>git commit -am "message"</b>   //to commit changes</li>
+      <li><b>git push origin master</b>     //Push your local changes to github</li>
+    </ul>
   </body>
 </html>
