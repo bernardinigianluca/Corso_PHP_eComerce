@@ -29,8 +29,10 @@ date_default_timezone_set("Europe/Rome");
         //=================
         echo '<h1>Fwrite</h1>';
         $file = fopen($filename, "w", $use_include_path);
+        
         $data=time();
         $data=date('H:i:s', $data);
+        
         $string = "Questa è una nuova riga " . $data;
         fwrite($file, $string);
         $contenutofile = file_get_contents($filename, $use_include_path);
