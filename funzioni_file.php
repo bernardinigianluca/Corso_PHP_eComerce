@@ -37,8 +37,6 @@ date_default_timezone_set("Europe/Rome");
         fwrite($file, $string);
         $contenutofile = file_get_contents($filename, $use_include_path);
         echo $contenutofile;
-        
-        echo "Verificando il git";
         ?>
         
         
