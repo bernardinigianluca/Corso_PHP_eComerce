@@ -1,28 +1,14 @@
 <?php 
-    if(isset($_POST["submit"])){
-        
-        $username = $_POST["username"];
-        $pwd = $_POST["password"];
-        
-        if(!$username or !$pwd){
-            echo 'Oops, manca alcun dato.';
-        }else{
-        
-            //Collegare al DB 
-            include 'collegamentoDB.php';
+        //Collegare al DB 
+        include 'collegamentoDB.php';
 
-            //Inserire dati nella tabella user
-            $sql = "Insert into users(id,username,password)value(NULL,'$username','$pwd')";
-            $result = mysqli_query($con, $sql);
-            
-            if (!$result){
-                echo 'Messagio di errore: ' . mysqli_error($con);
-            } else {
-                echo 'Dati inseriti con esito!';
-            }
-            mysqli_close($con);
+        //Selezionari i dati della tabella user
+        $sql = "SELECT * FROM users";
+        $result = mysqli_query($con, $sql);
+
+        if (!$result){
+            echo 'Messagio di errore: ' . mysqli_error($con);
         }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -35,30 +21,24 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Login</title>
+    <title>Leggere i dati DB con PHP</title>
   </head>
   <body>
-      <div class="container">
-          <div class="bg-primary">
-              <h2>La mia pagina di login</h2>
-          </div>
-          <div class="container">
-              <form action=login.php method="post" >
-                  
-                  <div class="form-group">
-                      <label >Username:</label>
-                      <input class="form-control"type="text" name="username" placeholder="Enter username" required>
-                  </div>
-                  
-                  <div class="form-group">
-                      <label >Password:</label>
-                      <input class="form-control" type="password" name="password" placeholder="Enter password" required>
-                  </div>
-                  <input class="btn btn-primary" type="submit" name="submit" value="Invia">
-              </form>
-              
-          </div>
-      </div> 
+    <div class="container">
+        <div class="shadow-sm">
+           <h2 class="border bg-primary p-3 rounded mt-2 mb-2">Leggere dati con PHP</h2> 
+        </div>
+      
+      <div class="col-sm-6">
+          <?php 
+          while($row = mysqli_fetch_assoc($result)){
+          ?>
+          <pre class="border bg-light p-3 rounded shadow mb-2">
+          <?php print_r($row); ?>
+          </pre>
+          <?php } ?>
+      </div>
+    </div> 
     
 
     <!-- Optional JavaScript -->
