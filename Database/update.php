@@ -21,7 +21,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Leggere i dati DB con PHP</title>
+    <title>Aggiornare i dati di una tabella</title>
   </head>
   <body>
     <div class="container">
@@ -46,15 +46,13 @@
                       <select class="" name="id">
                           <?php 
                             while($row = mysqli_fetch_assoc($result)){
-                                $id = $row['id'];
-                                echo '<option value="$id">$id</option>';
+                                $id = $row['ID'];
+                                echo "<option value='$id'>$id</option>";
                             }
                           ?>
-                          
-                          <option></option>
                       </select>
                   </div>
-                  <input class="btn btn-primary" type="submit" name="submit" value="Invia">
+                  <input class="btn btn-primary" type="submit" name="submit" value="Aggiorna">
               </form>             
           </div>
     </div> 
