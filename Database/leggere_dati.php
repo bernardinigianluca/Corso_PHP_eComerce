@@ -1,6 +1,6 @@
 <?php 
         //Collegare al DB 
-        include 'collegamentoDB.php';
+        include 'conDB.php';
 
         //Selezionari i dati della tabella user
         $sql = "SELECT * FROM users";

@@ -9,7 +9,7 @@
         }else{
         
             //Collegare al DB 
-            include 'collegamentoDB.php';
+            include 'conDB.php';
 
             //Inserire dati nella tabella user
             $sql = "Insert into users(id,username,password)value(NULL,'$username','$pwd')";

@@ -1,13 +1,25 @@
 <?php 
         //Collegare al DB 
-        include 'collegamentoDB.php';
+        include 'conDB.php';
 
         //Selezionari i dati della tabella user
         $sql = "SELECT * FROM users";
-        $result = mysqli_query($con, $sql);
+        $result_select = mysqli_query($con, $sql);
 
-        if (!$result){
-            echo 'Messagio di errore: ' . mysqli_error($con);
+        if (!$result_select){
+            die('Messagio di errore: ' . mysqli_error($con));
+        }
+        
+        if(isset($_POST['submit'])){
+            $user = $_POST['username'];
+            $pass = $_POST['password'];
+            $id =$_POST['id'];
+            
+            $sql = "UPDATE users SET username = '$user', password = '$pass' WHERE id = $id";
+            $result_update = mysqli_query($con, $sql);
+            if(!$result_update){
+                die('Messagio di errore: ' . mysqli_error($con));
+            }
         }
 ?>
 
@@ -26,11 +38,11 @@
   <body>
     <div class="container">
         <div class="shadow-sm">
-           <h2 class="border bg-primary p-3 rounded mt-2 mb-2">Leggere dati con PHP</h2> 
+           <h2 class="border bg-primary p-3 rounded mt-2 mb-2">Aggiornare dati con PHP</h2> 
         </div>
         
         <div class="container">
-              <form action=login.php method="post" >
+              <form action=update.php method="post" >
                   
                   <div class="form-group">
                       <label >Username:</label>
@@ -45,7 +57,7 @@
                   <div class="form-group">
                       <select class="" name="id">
                           <?php 
-                            while($row = mysqli_fetch_assoc($result)){
+                            while($row = mysqli_fetch_assoc($result_select)){
                                 $id = $row['ID'];
                                 echo "<option value='$id'>$id</option>";
                             }
