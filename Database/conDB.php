@@ -8,7 +8,13 @@ $database="login";
 $con = mysqli_connect($host, $user, $password, $database);
 
 if (!$con){
-    die("Impossibile connettersi al DB");
+    alert();
+    die();
 }
 
+function alert(){
+   echo "<script type='text/javascript'>";
+   echo "alert('Impossibile connetersi al DB.');";
+   echo "</script>";
+   }
 ?>
