@@ -1,32 +1,8 @@
 <?php
     $margin_top = "80px";
-    //Collegare al DB 
-    include 'conDB.php';
-
-    //Selezionari i dati della tabella user
-    $sql = "SELECT * FROM users ORDER BY id";
-    $result = mysqli_query($con, $sql);
-
-    if (!$result){
-        echo 'Messagio di errore: ' . mysqli_error($con);
-    }
-        
-        
-if (isset($_POST["submit"])){
-    
-    $user = $_POST["username"];
-    $pass = $_POST["password"];
-    $id = $_POST["id"];
-    
-    $sql = "UPDATE users SET username = '$user', password = '$pass' WHERE id='$id'";
-        
-    if(mysqli_query($con, $sql)){
-        $margin_top = "0px";
-        func_messagio();
-    } else {
-        echo "Imposibile esseguire $richiesta mysqli_error($connessioneDB)";
-    }
-}
+    include './conDB.php';
+    include './functions.php';
+    aggiornaDati();
 ?>
 
 <!DOCTYPE html>
@@ -96,12 +72,7 @@ if (isset($_POST["submit"])){
                   
                   <div class="form-group">
                       <select class="" name="id">
-                          <?php 
-                            while($row = mysqli_fetch_assoc($result)){
-                                $id = $row['ID'];
-                                echo "<option value='$id'>$id</option>";
-                            }
-                          ?>
+                          <?php riempiElenco(); ?>
                       </select>
                   </div>
                   <input class="btn btn-success" type="submit" name="submit" value="Aggiorna">
@@ -119,15 +90,15 @@ if (isset($_POST["submit"])){
     crossorigin="anonymous"></script>
   </body>
   <?php 
-  function func_messagio(){
-    echo    '<div class="container" style="margin-top:80px">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <strong>Congratulazioni!</strong> I dati sono stati aggiornati.
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-            </div>';
-   }
+//  function func_messagio(){
+//    echo    '<div class="container" style="margin-top:80px">
+//                <div class="alert alert-success alert-dismissible fade show" role="alert">
+//                  <strong>Congratulazioni!</strong> I dati sono stati aggiornati.
+//                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+//                    <span aria-hidden="true">&times;</span>
+//                  </button>
+//                </div>
+//            </div>';
+//   }
   ?>
 </html>

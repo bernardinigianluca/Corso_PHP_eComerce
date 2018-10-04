@@ -1,36 +1,8 @@
 <?php
-
     $margin_top = "80px";
-    
-    //Collegare al DB 
-    include 'conDB.php';
-    
-    //Cancella dati
-     if (isset($_POST["delete"])){
-
-        $user = $_POST["username"];
-//      $pass = $_POST["password"];
-        $id = $_POST["id"];
-
-        $sql = "DELETE FROM users WHERE id='$id'";
-
-        if(mysqli_query($con, $sql)){
-            $margin_top = "0px";
-            func_messagio();
-        } else {
-            echo "Imposibile esseguire $richiesta mysqli_error($con)";
-        }
-    }  
-
-    //Selezionari i dati della tabella user
-    $sql = "SELECT * FROM users ORDER BY id";
-    $result = mysqli_query($con, $sql);
-
-    if (!$result){
-        echo 'Messagio di errore: ' . mysqli_error($con);
-    }
-        
-   
+    include './conDB.php';
+    include './functions.php';
+    cancellaDati();
 ?>
 
 <!DOCTYPE html>
@@ -101,15 +73,10 @@
                   
                   <div class="form-group">
                       <select class="" name="id">
-                          <?php 
-                            while($row = mysqli_fetch_assoc($result)){
-                                $id = $row['ID'];
-                                echo "<option value='$id'>$id</option>";
-                            }
-                          ?>
+                          <?php riempiElenco(); ?>
                       </select>
                   </div>
-                  <input class="btn btn-success" type="submit" name="submit" value="Aggiorna">
+<!--                  <input class="btn btn-success" type="submit" name="submit" value="Aggiorna">-->
                   <input class="btn btn-danger" type="submit" name="delete" value="Cancella">
               </form>             
           </div>
@@ -122,19 +89,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
-  <?php
-  
-    mysqli_close($con);
-    
-    function func_messagio(){
-    echo    '<div class="container" style="margin-top:80px">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong>Congratulazioni!</strong> I dati sono stati cancellati.
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-            </div>';
-   }
-  ?>
 </html>

@@ -1,14 +1,8 @@
-<?php 
-        //Collegare al DB 
-        include 'conDB.php';
-
-        //Selezionari i dati della tabella user
-        $sql = "SELECT * FROM users ORDER BY id";
-        $result = mysqli_query($con, $sql);
-
-        if (!$result){
-            echo 'Messagio di errore: ' . mysqli_error($con);
-        }
+<?php
+    $margin_top = "80px";
+    include './conDB.php';
+    include './functions.php';
+    leggereDati();
 ?>
 
 <!DOCTYPE html>
@@ -62,13 +56,7 @@
         </div>
       
       <div class="col-sm-6">
-          <?php 
-          while($row = mysqli_fetch_assoc($result)){
-          ?>
-          <pre class="border bg-light p-3 rounded shadow mb-2">
-          <?php print_r($row); ?>
-          </pre>
-          <?php } ?>
+          <?php mostraDati(); ?>
       </div>
     </div> 
     

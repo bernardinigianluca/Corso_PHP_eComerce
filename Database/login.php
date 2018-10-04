@@ -1,30 +1,8 @@
-<?php 
+<?php
+    include './conDB.php';
+    include './functions.php';
     $margin_top = "80px";
-    if(isset($_POST["submit"])){
-        
-        $username = $_POST["username"];
-        $pwd = $_POST["password"];
-        
-        if(!$username or !$pwd){
-            echo 'Oops, manca alcun dato.';
-        }else{
-        
-            //Collegare al DB 
-            include 'conDB.php';
-
-            //Inserire dati nella tabella user
-            $sql = "Insert into users(id,username,password)value(NULL,'$username','$pwd')";
-            $result = mysqli_query($con, $sql);
-            
-            if (!$result){
-                echo 'Messagio di errore: ' . mysqli_error($con);
-            } else {
-                $margin_top = "0px";
-                alertLogin();
-            }
-            mysqli_close($con);
-        }
-    }
+    creaDati();
 ?>
 
 <!DOCTYPE html>
@@ -109,16 +87,4 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
     crossorigin="anonymous"></script>
   </body>
-  <?php 
-   function alertLogin(){
-    echo    '<div class="container" style="margin-top:80px">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <strong>Congratulazioni!</strong> I dati sono stati inseriti.
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-            </div>';
-   }
-  ?> 
 </html>

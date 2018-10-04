@@ -5,6 +5,7 @@ $user="root";
 $password="";
 $database="login";
 
+global $con;
 $con = mysqli_connect($host, $user, $password, $database);
 
 if (!$con){
