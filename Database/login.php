@@ -19,9 +19,8 @@
             if (!$result){
                 echo 'Messagio di errore: ' . mysqli_error($con);
             } else {
-//               alert();
                 $margin_top = "0px";
-                func_messagio();
+                alertLogin();
             }
             mysqli_close($con);
         }
@@ -111,12 +110,7 @@
     crossorigin="anonymous"></script>
   </body>
   <?php 
-   function alert(){
-   echo "<script type='text/javascript'>";
-   echo "alert('Complimenti. I dati sono stati registrati.');";
-   echo "</script>";
-   }
-   function func_messagio(){
+   function alertLogin(){
     echo    '<div class="container" style="margin-top:80px">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                   <strong>Congratulazioni!</strong> I dati sono stati inseriti.
