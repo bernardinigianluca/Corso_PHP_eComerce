@@ -4,11 +4,10 @@
     include './functions.php';
     $margin_top = "80px";
     creaDati();
+    $title_page = "login";
     include './Includes/header.php';
     include './Includes/navbar.php';
 ?>
-
-     
 
       <div class="container" style="margin-top:<?php echo $margin_top ?>">
           <div class="shadow-sm">

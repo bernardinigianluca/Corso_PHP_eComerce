@@ -4,6 +4,7 @@
     include './conDB.php';
     include './functions.php';
     aggiornaDati();
+    $title_page = "aggiorna dati";
     include './Includes/header.php';
     include './Includes/navbar.php';
 ?>

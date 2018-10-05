@@ -3,6 +3,7 @@
     include './conDB.php';
     include './functions.php';
     leggereDati();
+    $title_page = "leggere dati";
     include './Includes/header.php';
     include './Includes/navbar.php';
 ?>

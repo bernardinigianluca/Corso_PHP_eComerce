@@ -4,6 +4,7 @@
     include './conDB.php';
     include './functions.php';
     cancellaDati();
+    $title_page = "cancella dati";
     include './Includes/header.php';
     include './Includes/navbar.php';
 ?>
