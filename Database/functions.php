@@ -3,6 +3,7 @@
 function creaDati(){
     global $result;
     global $con;
+    global $margin_top;
     
     if(isset($_POST["submit"])){
 
@@ -42,6 +43,7 @@ function msgbox_Login(){
 function aggiornaDati(){
     global $con;
     global $result;
+    global $margin_top;
     
     //Selezionari i dati della tabella user
     $sql = "SELECT * FROM users ORDER BY id";
@@ -111,6 +113,7 @@ function mostraDati(){
 function cancellaDati(){
    global $result;
    global $con;
+   global $margin_top;
    
     //Cancella dati
      if (isset($_POST["delete"])){
