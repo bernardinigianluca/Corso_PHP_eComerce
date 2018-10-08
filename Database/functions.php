@@ -151,3 +151,24 @@ function func_messagio(){
             </div>';
    }
 
+   
+function mostraDatiTabella(){
+    global $result;
+    if($result){
+        if(mysqli_num_rows($result)>0){
+            echo "<table class='table table-striped table-hover table-condensed table-bordered'>
+                      <thead>
+                          <tr> <th>ID</th> <th>username</th> <th>password</th>
+                          </tr>
+                      </thead>";
+                while($row = mysqli_fetch_array($result)){
+                    echo "<tr>";
+                        echo "<td>" . $row["ID"] . "</td>";
+                        echo "<td>" . $row["username"] . "</td>";
+                        echo "<td>" . $row["password"] . "</td>";
+                    echo "</tr>";    
+                }
+            echo "</table>";
+        }
+    }
+}

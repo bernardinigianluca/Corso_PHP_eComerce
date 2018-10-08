@@ -16,6 +16,9 @@
              <a class="nav-link" href="leggere_dati.php">Leggere dati</a>
          </li>
          <li class="nav-item">
+             <a class="nav-link" href="dati-tabella.php">Dati in tabella</a>
+         </li>
+         <li class="nav-item">
              <a class="nav-link" href="update.php">Aggiorna</a>
          </li>
          <li class="nav-item">

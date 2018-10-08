@@ -12,7 +12,7 @@
       <div class="container" style="margin-top:<?php echo $margin_top ?>">
           <div class="shadow-sm">
            <h2 class="border bg-primary p-3 rounded mt-2 mb-2">La mia pagina di login</h2> 
-        </div>
+          </div>
           <div class="container">
               <form action=login.php method="post" >
                   
